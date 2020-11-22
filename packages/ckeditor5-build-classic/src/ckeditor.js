@@ -5,9 +5,9 @@
 
 // The editor creator to use.
 import ClassicEditorBase from '@ckeditor/ckeditor5-editor-classic/src/classiceditor';
+import InlineEditorBase from '@ckeditor/ckeditor5-editor-inline/src/inlineeditor';
 
 import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
-import UploadAdapter from '@ckeditor/ckeditor5-adapter-ckfinder/src/uploadadapter';
 import Autoformat from '@ckeditor/ckeditor5-autoformat/src/autoformat';
 import Bold from '@ckeditor/ckeditor5-basic-styles/src/bold';
 import Italic from '@ckeditor/ckeditor5-basic-styles/src/italic';
@@ -28,14 +28,20 @@ import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph';
 import PasteFromOffice from '@ckeditor/ckeditor5-paste-from-office/src/pastefromoffice';
 import Table from '@ckeditor/ckeditor5-table/src/table';
 import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar';
+import TableProperties from '@ckeditor/ckeditor5-table/src/tableproperties';
+import TableCellProperties from '@ckeditor/ckeditor5-table/src/tablecellproperties';
 import TextTransformation from '@ckeditor/ckeditor5-typing/src/texttransformation';
+import Markdown from '@ckeditor/ckeditor5-markdown-gfm/src/markdown';
+import Base64UploadAdapter from '@ckeditor/ckeditor5-upload/src/adapters/base64uploadadapter';
+import ImageResize from '@ckeditor/ckeditor5-image/src/imageresize';
 
-export default class ClassicEditor extends ClassicEditorBase {}
+class ClassicEditor extends ClassicEditorBase {}
+class InlineEditor extends InlineEditorBase {}
 
-// Plugins to include in the build.
-ClassicEditor.builtinPlugins = [
+const plugins = [
+	Markdown,
 	Essentials,
-	UploadAdapter,
+	Base64UploadAdapter,
 	Autoformat,
 	Bold,
 	Italic,
@@ -48,19 +54,25 @@ ClassicEditor.builtinPlugins = [
 	ImageStyle,
 	ImageToolbar,
 	ImageUpload,
-	Indent,
+	ImageResize,
+	// Indent,
 	Link,
-	List,
+	// List,
 	MediaEmbed,
 	Paragraph,
 	PasteFromOffice,
 	Table,
 	TableToolbar,
+	TableProperties,
+	TableCellProperties,
 	TextTransformation
 ];
 
-// Editor configuration.
-ClassicEditor.defaultConfig = {
+// Plugins to include in the build.
+ClassicEditor.builtinPlugins = plugins;
+InlineEditor.builtinPlugins = plugins;
+
+const config = {
 	toolbar: {
 		items: [
 			'heading',
@@ -68,35 +80,52 @@ ClassicEditor.defaultConfig = {
 			'bold',
 			'italic',
 			'link',
-			'bulletedList',
-			'numberedList',
-			'|',
-			'indent',
-			'outdent',
 			'|',
 			'imageUpload',
 			'blockQuote',
 			'insertTable',
 			'mediaEmbed',
-			'undo',
-			'redo'
+			// 'undo',
+			// 'redo'
 		]
 	},
 	image: {
 		toolbar: [
+			'imageStyle:alignLeft',
+			'imageStyle:alignCenter',
+			'imageStyle:alignRight',
 			'imageStyle:full',
 			'imageStyle:side',
 			'|',
+			'imageResize',
+			'|',
 			'imageTextAlternative'
+		],
+		styles: [
+			'alignLeft',
+			'alignCenter',
+			'alignRight',
+			'full',
+			'side'
 		]
 	},
 	table: {
 		contentToolbar: [
 			'tableColumn',
 			'tableRow',
-			'mergeTableCells'
+			'mergeTableCells',
+			'tableProperties',
+			'tableCellProperties'
 		]
 	},
 	// This value must be kept in sync with the language defined in webpack.config.js.
 	language: 'en'
+};
+
+// Editor configuration.
+ClassicEditor.defaultConfig = config;
+InlineEditor.defaultConfig = config;
+
+export default {
+	ClassicEditor, InlineEditor
 };
