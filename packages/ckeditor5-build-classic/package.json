@@ -1,6 +1,6 @@
 {
   "name": "@ckeditor/ckeditor5-build-classic",
-  "version": "23.1.0-polar.6",
+  "version": "23.1.0-polar.8",
   "description": "The classic editor build of CKEditor 5 – the best browser-based rich text editor.",
   "keywords": [
     "ckeditor5-build",
@@ -75,6 +75,7 @@
   },
   "dependencies": {
     "@ckeditor/ckeditor5-markdown-gfm": "^23.1.0",
+    "@ckeditor/ckeditor5-special-characters": "^23.1.0",
     "@ckeditor/ckeditor5-upload": "^23.1.0"
   }
 }
