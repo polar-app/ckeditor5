@@ -5,8 +5,8 @@
 
 // The editor creator to use.
 import ClassicEditorBase from '@ckeditor/ckeditor5-editor-classic/src/classiceditor';
-import InlineEditorBase from '@ckeditor/ckeditor5-editor-inline/src/inlineeditor';
-// import BalloonEditorBase from '@ckeditor/ckeditor5-editor-balloon/src/ballooneditor';
+// import InlineEditorBase from '@ckeditor/ckeditor5-editor-inline/src/inlineeditor';
+import BalloonEditorBase from '@ckeditor/ckeditor5-editor-balloon/src/ballooneditor';
 
 import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
 import Autoformat from '@ckeditor/ckeditor5-autoformat/src/autoformat';
@@ -41,8 +41,8 @@ import SpecialCharacters from '@ckeditor/ckeditor5-special-characters/src/specia
 import SpecialCharactersEssentials from '@ckeditor/ckeditor5-special-characters/src/specialcharactersessentials';
 
 class ClassicEditor extends ClassicEditorBase {}
-class InlineEditor extends InlineEditorBase {}
-// class BalloonEditor extends BalloonEditorBase {}
+// class InlineEditor extends InlineEditorBase {}
+class BalloonEditor extends BalloonEditorBase {}
 
 const plugins = [
 	Markdown,
@@ -82,8 +82,8 @@ const plugins = [
 
 // Plugins to include in the build.
 ClassicEditor.builtinPlugins = plugins;
-InlineEditor.builtinPlugins = plugins;
-// BalloonEditor.builtinPlugins = plugins;
+// InlineEditor.builtinPlugins = plugins;
+BalloonEditor.builtinPlugins = plugins;
 
 const config = {
 	toolbar: {
@@ -159,10 +159,10 @@ const config = {
 
 // Editor configuration.
 ClassicEditor.defaultConfig = config;
-InlineEditor.defaultConfig = config;
-// BalloonEditor.defaultConfig = config;
+// InlineEditor.defaultConfig = config;
+BalloonEditor.defaultConfig = config;
 
 export default {
-	ClassicEditor, InlineEditor
-	// ClassicEditor, BalloonEditor
+	// ClassicEditor, InlineEditor
+	ClassicEditor, BalloonEditor
 };
