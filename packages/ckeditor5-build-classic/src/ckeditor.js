@@ -42,6 +42,7 @@ import SpecialCharactersEssentials from '@ckeditor/ckeditor5-special-characters/
 
 class ClassicEditor extends ClassicEditorBase {}
 class InlineEditor extends InlineEditorBase {}
+// class BalloonEditor extends BalloonEditorBase {}
 
 const plugins = [
 	Markdown,
@@ -82,6 +83,7 @@ const plugins = [
 // Plugins to include in the build.
 ClassicEditor.builtinPlugins = plugins;
 InlineEditor.builtinPlugins = plugins;
+// BalloonEditor.builtinPlugins = plugins;
 
 const config = {
 	toolbar: {
@@ -158,7 +160,9 @@ const config = {
 // Editor configuration.
 ClassicEditor.defaultConfig = config;
 InlineEditor.defaultConfig = config;
+// BalloonEditor.defaultConfig = config;
 
 export default {
 	ClassicEditor, InlineEditor
+	// ClassicEditor, BalloonEditor
 };

@@ -36,7 +36,6 @@ const defaultStyles = {
 		name: 'full',
 		title: 'Full size image',
 		icon: fullWidthIcon,
-		isDefault: true
 	},
 
 	// This represents a side image.
@@ -52,7 +51,8 @@ const defaultStyles = {
 		name: 'alignLeft',
 		title: 'Left aligned image',
 		icon: leftIcon,
-		className: 'image-style-align-left'
+		className: 'image-style-align-left',
+		isDefault: true
 	},
 
 	// This style represents a centered image.
